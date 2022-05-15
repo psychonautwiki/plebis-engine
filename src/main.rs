@@ -10,7 +10,7 @@ use elasticsearch::{
 use serde::{Deserialize, Serialize};
 use warp::Filter;
 
-use crate::services::search;
+use crate::services::{report, search};
 
 mod services;
 mod types;
@@ -58,8 +58,13 @@ async fn main() {
     let search =
         warp::path!("search")
             .and(warp::query::<Query>())
-            .and(with_es_client(es.clone()))
+            //.and(with_es_client(es.clone()))
             .and_then(search::search);
+
+    let report =
+        warp::path!("report" / String)
+            //.and(with_es_client(es.clone()))
+            .and_then(report::report);
 
     let get_routes =
         warp::fs::dir("static")
@@ -71,6 +76,7 @@ async fn main() {
                 warp::path!("search" / "font")
                     .and(warp::fs::dir("static/font"))
             )
+            .or(report)
             .or(search);
 
     let routes =

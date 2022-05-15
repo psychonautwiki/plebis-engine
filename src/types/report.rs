@@ -28,12 +28,12 @@ pub struct Report {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Meta {
-    pub year: i64,
+    pub year: Option<i64>,
     pub erowid_id: i64,
     pub gender: Option<String>,
     pub age: Option<i64>,
     pub published: String,
-    pub views: i64,
+    pub views: Option<i64>,
     pub erowid_attributes: Option<ErowidAttributes>,
 }
 
@@ -98,7 +98,7 @@ impl From<Hit<Report, ReportHighlight>> for ResultItem {
             substance_set.insert(substance_info.substance.clone());
         }
 
-        let substance_tags =
+        let mut substance_tags =
             substance_set
                 .iter()
                 .map(|substance|
@@ -109,6 +109,13 @@ impl From<Hit<Report, ReportHighlight>> for ResultItem {
                 .collect::<Vec<ResultItemTag>>();
 
         let mut obstrusive_tags = Vec::<ResultItemTag>::new();
+
+        obstrusive_tags
+            .push(
+                ResultItemTag {
+                    label: format!("{}", hit.source.meta.erowid_id),
+                },
+            );
 
         if let Some(gender) = hit.source.meta.gender {
             obstrusive_tags
@@ -128,12 +135,18 @@ impl From<Hit<Report, ReportHighlight>> for ResultItem {
                 );
         }
 
-        obstrusive_tags
-            .push(
-                ResultItemTag {
-                    label: format!("{}", hit.source.meta.year),
-                },
-            );
+        if let Some(year) = hit.source.meta.year {
+            obstrusive_tags
+                .push(
+                    ResultItemTag {
+                        label: format!("{}", year),
+                    },
+                );
+        }
+
+        substance_tags.sort_by(|a, b|
+            a.label.cmp(&b.label)
+        );
 
         ResultItem {
             title,

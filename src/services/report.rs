@@ -9,51 +9,22 @@ use crate::types::es_envelope::EsEnvelope;
 use crate::types::report::{Report, ReportHighlight};
 use crate::types::results_payload::{ResultEnvelope, ResultItem};
 
-pub async fn search(
-    query: Query,
-    //es: Arc<Mutex<Elasticsearch>>,
+pub async fn report(
+    erowid_id: String,
 ) -> Result<impl warp::Reply, warp::Rejection> {
-    let es = es_client();
+    let reg = Handlebars::new();
 
-    //let es =
-    //    match es.lock() {
-    //        Ok(es) => es,
-    //        Err(e) => {
-    //            return Err(
-    //                warp::reject::custom(
-    //                    PlebisError::Db(
-    //                        "Failed to obtain db instance",
-    //                    ),
-    //                ),
-    //            );
-    //        }
-    //    };
+    let es = es_client();
 
     let search_response =
         es
             .search(SearchParts::None)
             .body(json!({
                 "query": {
-                    "multi_match": {
-                        "query": &query.q,
-                        "fields": ["title", "body^7"]
+                    "match": {
+                        "meta.erowidId": &erowid_id,
                     }
                 },
-                "highlight": {
-                    "pre_tags": ["<b>"],
-                    "post_tags": ["</b>"],
-                    "fields": {
-                        "title": {
-                            "number_of_fragments": 1,
-                            "fragment_size": 100
-                        },
-                        "body": {
-                            "fragment_size": 100,
-                            "number_of_fragments": 3,
-                            "order": ""
-                        }
-                    }
-                }
             }))
             .allow_no_indices(true)
             .send()
@@ -67,9 +38,8 @@ pub async fn search(
             )?;
 
     let search_result =
-        //search_response.json::<EsEnvelope<Report, ReportHighlight>>()
-        serde_json::from_str::<EsEnvelope<Report, ReportHighlight>>(&dbg!(search_response.text().await.unwrap()))
-            //.await
+        search_response.json::<EsEnvelope<Report, ReportHighlight>>()
+            .await
             .map_err(|err|
                          warp::reject::custom(
                              PlebisError::DataError(
@@ -88,8 +58,8 @@ pub async fn search(
 
     let result_env =
         ResultEnvelope {
-            title: format!("{} - Plebis", &query.q),
-            query: query.q.clone(),
+            title: format!("{} - Plebis", &erowid_id),
+            query: erowid_id,
             results: result_items.clone(),
         };
 
@@ -103,7 +73,7 @@ pub async fn search(
                          ),
             )?;
 
-    let reg = Handlebars::new();
+    dbg!(&tpl_val);
 
     reg
         .render_template(

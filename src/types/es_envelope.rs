@@ -25,7 +25,7 @@ pub struct Shards {
 pub struct Hits<T, H> {
     pub total: Total,
     #[serde(rename = "max_score")]
-    pub max_score: f64,
+    pub max_score: Option<f64>,
     pub hits: Vec<Hit<T, H>>,
 }
 
@@ -44,7 +44,7 @@ pub struct Hit<T, H> {
     #[serde(rename = "_id")]
     pub id: String,
     #[serde(rename = "_score")]
-    pub score: f64,
+    pub score: Option<f64>,
     #[serde(rename = "_ignored")]
     pub ignored: Vec<String>,
     #[serde(rename = "_source")]

@@ -2,12 +2,12 @@ use serde::{Serialize, Deserialize};
 
 pub type ResultItems = Vec<ResultItem>;
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Ord, PartialOrd, Eq, Serialize, Deserialize)]
 pub struct ResultItemTag {
     pub label: String,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Ord, PartialOrd, Eq, Serialize, Deserialize)]
 pub struct ResultItem {
     pub title: String,
     pub display_text: String,
@@ -17,7 +17,7 @@ pub struct ResultItem {
     pub obstrusive_tags: Vec<ResultItemTag>,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, PartialEq, Ord, PartialOrd, Eq, Serialize, Deserialize)]
 pub struct ResultEnvelope<T> {
     pub title: String,
     pub query: String,
