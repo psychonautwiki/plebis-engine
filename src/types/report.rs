@@ -7,6 +7,12 @@ use crate::types::results_payload::{ResultItem, ResultItemTag};
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
+pub struct ReportProcessed {
+    pub body: String,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ReportHighlight {
     pub body: Option<Vec<String>>,
     pub title: Option<Vec<String>>,
@@ -23,6 +29,7 @@ pub struct Report {
     pub substance: String,
     pub substance_info: Vec<SubstanceInfo>,
     pub title: String,
+    pub processed: Option<ReportProcessed>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -70,14 +77,14 @@ pub struct SubstanceInfo {
 impl From<Hit<Report, ReportHighlight>> for ResultItem {
     fn from(hit: Hit<Report, ReportHighlight>) -> Self {
         let title =
-            match hit.highlight.title {
+            match hit.highlight.as_ref().map(|hl| hl.title.as_ref()).flatten() {
                 Some(title) if title.len() > 0 =>
                     title.join(""),
                 _ => hit.source.title,
             };
 
         let display_text =
-            match hit.highlight.body {
+            match hit.highlight.map(|hl| hl.body).flatten() {
                 Some(body) if body.len() > 0 =>
                     [
                         body.as_slice(),
@@ -88,14 +95,40 @@ impl From<Hit<Report, ReportHighlight>> for ResultItem {
 
         let link =
             format!(
-                "http://erowid.org.global.prod.fastly.net/experiences/exp.php?ID={}",
+                "/report/{}",
                 hit.source.meta.erowid_id,
             );
 
         let mut substance_set = HashSet::new();
 
         for substance_info in hit.source.substance_info.iter() {
-            substance_set.insert(substance_info.substance.clone());
+            let substance_meta =
+                vec!(
+                    &substance_info.form,
+                    &substance_info.method,
+                    &substance_info.amount,
+                )
+                    .iter()
+                    .filter_map(|item|
+                        if *item == "" {
+                            None
+                        } else {
+                            Some((*item).clone())
+                        }
+                    )
+                    .collect::<Vec<_>>();
+
+            substance_set.insert(
+                format!(
+                    "{}{}",
+                    substance_info.substance,
+                    if substance_meta.len() > 0 {
+                        format!(" [{}]", substance_meta.join(", "))
+                    } else {
+                        "".to_string()
+                    }
+                )
+            );
         }
 
         let mut substance_tags =
@@ -108,17 +141,10 @@ impl From<Hit<Report, ReportHighlight>> for ResultItem {
                 )
                 .collect::<Vec<ResultItemTag>>();
 
-        let mut obstrusive_tags = Vec::<ResultItemTag>::new();
-
-        obstrusive_tags
-            .push(
-                ResultItemTag {
-                    label: format!("{}", hit.source.meta.erowid_id),
-                },
-            );
+        let mut entry_tags = Vec::<ResultItemTag>::new();
 
         if let Some(gender) = hit.source.meta.gender {
-            obstrusive_tags
+            entry_tags
                 .push(
                     ResultItemTag {
                         label: gender,
@@ -127,7 +153,7 @@ impl From<Hit<Report, ReportHighlight>> for ResultItem {
         }
 
         if let Some(age) = hit.source.meta.age {
-            obstrusive_tags
+            entry_tags
                 .push(
                     ResultItemTag {
                         label: format!("{}y", age),
@@ -136,7 +162,7 @@ impl From<Hit<Report, ReportHighlight>> for ResultItem {
         }
 
         if let Some(year) = hit.source.meta.year {
-            obstrusive_tags
+            entry_tags
                 .push(
                     ResultItemTag {
                         label: format!("{}", year),
@@ -149,11 +175,12 @@ impl From<Hit<Report, ReportHighlight>> for ResultItem {
         );
 
         ResultItem {
+            id: hit.source.meta.erowid_id.to_string(),
             title,
             display_text,
             link,
             tags: substance_tags,
-            obstrusive_tags,
+            entry_tags,
         }
     }
 }

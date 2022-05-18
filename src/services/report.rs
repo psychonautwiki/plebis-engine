@@ -6,7 +6,7 @@ use serde_json::json;
 
 use crate::{es_client, PlebisError, Query, RESULTS_TEMPLATE};
 use crate::types::es_envelope::EsEnvelope;
-use crate::types::report::{Report, ReportHighlight};
+use crate::types::report::{Report, ReportHighlight, ReportProcessed};
 use crate::types::results_payload::{ResultEnvelope, ResultItem};
 
 pub async fn report(
@@ -50,17 +50,44 @@ pub async fn report(
 
     let hits = search_result.hits.hits;
 
-    let result_items: Vec<ResultItem> =
-        hits
-            .iter()
-            .map(|item| item.into())
-            .collect();
+    if hits.len() != 1 {
+        return Err(warp::reject::custom(
+            PlebisError::DataError(
+                String::from("Received more than one result"),
+            ),
+        ));
+    }
+
+    let mut report = hits[0].clone();
+
+    report.source.processed = {
+        let processed_body =
+            report
+                .source
+                .body
+                .split("\r\n\r\n")
+                // remove leading and trailing whitespaces
+                .map(|section| section.trim_start().trim_end())
+                // wrap in <p> tags
+                .map(|section| format!("<p>{}</p>", section))
+                // replace \r\n with <br>
+                .map(|section| section.replace("\r\n", "<br>"))
+                .collect::<Vec<_>>();
+
+        Some(
+            ReportProcessed {
+                body: processed_body.join("\n"),
+            }
+        )
+    };
 
     let result_env =
         ResultEnvelope {
+            total_results: search_result.hits.total.value,
             title: format!("{} - Plebis", &erowid_id),
             query: erowid_id,
-            results: result_items.clone(),
+            data: report.source.clone(),
+            extra: ResultItem::from(&report),
         };
 
     let tpl_val =
@@ -73,12 +100,11 @@ pub async fn report(
                          ),
             )?;
 
-    dbg!(&tpl_val);
-
     reg
         .render_template(
-            RESULTS_TEMPLATE,
-            &tpl_val,
+            //REPORT_TEMPLATE,
+            &std::fs::read_to_string("templates/report.hbs").unwrap(),
+            &dbg!(tpl_val),
         )
         .map(|body|
                  warp::reply::html(

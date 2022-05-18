@@ -1,108 +1,131 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--[if IE 6]><html class="ie6" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
-<!--[if IE 7]><html class="lt-ie8 lt-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
-<!--[if IE 8]><html class="lt-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
-<!--[if gt IE 8]><!--><html xmlns="http://www.w3.org/1999/xhtml" class="no-js opacity csstransforms3d csstransitions svg cssfilters is-not-mobile-device full-urls dark-header dark-bg"><!--<![endif]-->
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=1" />
-    <meta name="referrer" content="origin" />
-    <meta name="HandheldFriendly" content="true" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>{{title}} on Plebis</title>
-    <link href="/favicon.ico" rel="shortcut icon" />
-    <link rel="apple-touch-icon" href="/assets/logo_icon128.v101.png" />
-    <link rel="image_src" href="/assets/logo_homepage.normal.v101.png" />
-    <link rel="stylesheet" href="/results.css" />
-    <style>
-        div.exp-tags {
-            margin: 4px 0 0 0;
-        }
+    <title>{{title}}</title>
+    <meta charset="utf-8" />
+    <meta name="rating" content="general" />
+    <meta name="keywords" content="Blog" />
 
-        div.exp-tags span.tag {
-            border: 1px solid gray;
-            margin: 2px 4px 0px 0px;
-            padding: 2px 2px;
-            font-size: 12px;
-        }
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
 
-        .obstrusive-tag {
-            border: 1px solid gray;
-            line-height: 150%;
-            font-size: 14px;
-            margin: 0px 0px 0px 0px;
-            padding: 1px 2px;
-        }
+    <link rel="icon" href="http://auto.psy.is/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="http://auto.psy.is/assets/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://auto.psy.is/assets/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://auto.psy.is/assets/fav/favicon-16x16.png">
+    <link rel="manifest" href="http://auto.psy.is/assets/fav/manifest.json">
+    <link rel="mask-icon" href="http://auto.psy.is/assets/fav/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="http://auto.psy.is/assets/fav/favicon.ico">
+    <meta name="msapplication-config" content="http://auto.psy.is/assets/fav/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 
-        h2.result__title .obstrusive-tag:nth-of-type(1) {
-            margin-left: 3px;
-        }
-    </style>
+    <meta name="robots" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:image" content="http://auto.psy.is/assets/images/cover.jpg" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Blog" />
+
+    <link rel="stylesheet" href="assets/css/normalize.css?v=9ac5366626" />
+    <link rel="stylesheet" href="assets/css/basics.css?v=9ac5366626" />
+    <link rel="stylesheet" href="assets/css/gist.css?v=9ac5366626" />
+    <link rel="stylesheet" href="assets/css/cactus.css?v=9ac5366626" />
+    <script defer src="assets/js/html5shiv-printshiv.js?v=9ac5366626"></script>
+    <script defer src="assets/js/respond.js?v=9ac5366626"></script>
+
+    <meta name="description" content="Pioneering accessible harm reduction" />
+    <link rel="canonical" href="http://auto.psy.is/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+    <meta property="og:site_name" content="Blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog" />
+    <meta property="og:description" content="Pioneering accessible harm reduction" />
+    <meta property="og:url" content="http://auto.psy.is/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Blog" />
+    <meta name="twitter:description" content="Pioneering accessible harm reduction" />
+    <meta name="twitter:url" content="http://auto.psy.is/" />
+
+    <meta name="generator" content="Ghost 4.22" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="http://auto.psy.is/rss/" />
+    <link rel="stylesheet" type="text/css" href="public/cards.min.css?v=9ac5366626">
+
 </head>
-<body class="body--serp">
-<div class="site-wrapper  js-site-wrapper">
-    <div id="header_wrapper" class="header-wrap js-header-wrap" style="top: 0px;">
-        <div id="header" class="header  cw">
-            <div class="header__search-wrap"><a tabindex="-1" href="/" class="header__logo-wrap js-header-logo"><span class="header__logo js-logo-ddg">Plebis</span></a>
-                <div class="header__content  header__search">
-                    <form id="search_form" class="search--adv  search--header  js-search-form has-text" name="x" action="/search" method="GET">
-                        <input type="text" name="q" tabindex="1" autocomplete="off" id="search_form_input" class="search__input--adv  js-search-input" value="{{query}}" autocapitalize="off" autocorrect="off">
-                        <input id="search_form_input_clear" class="search__clear  js-search-clear" type="button" tabindex="3" value="X">
-                        <input id="search_button" class="search__button  js-search-button" type="submit" tabindex="2" value="S">
-                    </form>
-                </div>
+<body class="home-template">
+
+<section id="wrapper">
+    <header id="header" style="display: flex;align-items: center;">
+        <a href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 351.09 47.76" style="width: 170px;">
+                <path
+                    d="M0 2.76L.25.8h17.6c1.54 0 2.97.18 4.3.55 1.32.37 2.47.93 3.44 1.68.97.75 1.74 1.69 2.31 2.81s.85 2.42.85 3.89c0 1.67-.38 3.13-1.13 4.36-.75 1.24-1.75 2.3-2.99 3.18-1.24.89-2.63 1.62-4.17 2.21-1.54.59-3.12 1.08-4.73 1.48H10.6v12.42l6.03.65-.25 1.94H.25L0 34.03l4.27-.65V3.42L0 2.76zm10.61 15.39h3.87c1.04 0 2.01-.18 2.92-.55.9-.37 1.69-.89 2.36-1.56.67-.67 1.19-1.48 1.56-2.44.37-.96.55-2.04.55-3.24 0-2.21-.61-3.99-1.83-5.33-1.22-1.34-2.99-2.01-5.3-2.01l-4.12.35v14.78zM44.04 15.48c-.3-.27-.79-.56-1.46-.88-.67-.32-1.46-.48-2.36-.48-1.01 0-1.87.24-2.59.73-.72.49-1.08 1.17-1.08 2.04 0 .77.28 1.42.85 1.94s1.49 1.1 2.77 1.73l3.82 1.91c1.61.8 2.8 1.72 3.57 2.74s1.16 2.29 1.16 3.8c0 1.17-.23 2.17-.68 2.99-.45.82-1.1 1.53-1.94 2.11-.84.59-1.87 1.09-3.09 1.51-1.22.42-2.61.8-4.15 1.13-.7 0-1.42-.07-2.16-.2-.74-.13-1.45-.31-2.14-.53-.69-.22-1.34-.45-1.96-.7-.62-.25-1.15-.48-1.58-.68l-.96-6.33h3.27l1.56 4.02c.57.47 1.23.85 1.99 1.16.75.3 1.53.45 2.34.45 1.21 0 2.13-.31 2.76-.93.64-.62.96-1.43.96-2.44 0-.87-.25-1.57-.75-2.11-.5-.54-1.39-1.12-2.66-1.76l-3.87-2.01a11.32 11.32 0 0 1-3.19-2.41c-.89-.97-1.33-2.19-1.33-3.67 0-1.78.75-3.23 2.26-4.35 1.51-1.12 3.92-2.07 7.24-2.84 1.71 0 3.19.23 4.45.68s2.22.91 2.89 1.38v5.63h-2.77l-1.17-3.63zM53.74 47.76v-5.78h5.03l4.98-7.24-3.07.96-8.14-21.11-2.87-.5.25-1.94h11.66l.25 1.94-3.07.5L63.9 28.6l.5 3.82 5.68-17.8-2.36-.5.25-1.99H76.71l.25 1.99-3.12.5-7.64 20.26-5.68 12.87h-6.78zM90.79 15.03c-.34-.27-.68-.45-1.03-.55-.35-.1-.81-.15-1.38-.15-1.51 0-2.78.8-3.82 2.39S83 20.46 83 23.17c0 1.31.18 2.52.53 3.64.35 1.12.86 2.09 1.53 2.92.67.82 1.47 1.47 2.41 1.94.94.47 2.01.7 3.22.7.97 0 1.93-.19 2.87-.58.94-.39 1.79-.85 2.56-1.38l1.01 2.06c-1.17.9-2.46 1.7-3.85 2.39-1.39.69-2.99 1.31-4.8 1.88-1.68 0-3.23-.27-4.65-.8-1.42-.54-2.66-1.32-3.7-2.36-1.04-1.04-1.84-2.29-2.41-3.77-.57-1.47-.86-3.17-.86-5.08 0-1.94.33-3.65 1.01-5.13.67-1.47 1.57-2.75 2.71-3.82 1.14-1.07 2.45-1.97 3.95-2.69 1.49-.72 3.06-1.28 4.7-1.68 1.37 0 2.74.24 4.1.73 1.36.49 2.44 1.08 3.24 1.78v5.68h-4.62l-1.16-4.57zM108.49 33.41l2.51.55-.25 1.94H99.74l-.25-1.94 3.22-.55V3.69h-3.27l-.25-1.98 6.54-1.49 2.76-.2v16.09l7.49-4.8c1.54 0 2.81.14 3.79.43.99.29 1.76.76 2.31 1.43s.94 1.54 1.16 2.62c.22 1.07.33 2.4.33 3.98v13.64l3.47.55-.25 1.94h-11.06l-.25-1.94 2.26-.55V19.26c0-1.17-.26-2.04-.78-2.59-.52-.55-1.25-.83-2.19-.83-.74 0-1.53.22-2.36.66-.84.44-1.69.93-2.56 1.47l-1.36.86v14.58zM141.36 11.41c1.64 0 3.15.3 4.52.91s2.56 1.44 3.57 2.51c1.01 1.07 1.79 2.35 2.34 3.85s.83 3.11.83 4.85c0 1.98-.31 3.71-.93 5.2-.62 1.49-1.49 2.77-2.61 3.85-1.12 1.07-2.47 1.95-4.05 2.64-1.58.69-3.32 1.2-5.23 1.53-1.64 0-3.15-.3-4.52-.9-1.37-.6-2.56-1.44-3.57-2.51-1-1.07-1.78-2.35-2.34-3.82-.55-1.47-.83-3.08-.83-4.83 0-1.98.31-3.72.93-5.23.62-1.51 1.49-2.8 2.61-3.87 1.12-1.07 2.47-1.94 4.05-2.61 1.58-.68 3.32-1.2 5.23-1.57zm-6.68 11.66c0 1.64.16 3.13.48 4.47.32 1.34.77 2.5 1.36 3.47.59.97 1.27 1.73 2.06 2.26.79.54 1.67.8 2.64.8 1.71 0 3.01-.8 3.9-2.41s1.33-3.8 1.33-6.59c0-3.52-.62-6.23-1.86-8.14-1.24-1.91-2.8-2.87-4.68-2.87-1.71 0-3.01.8-3.9 2.41-.89 1.63-1.33 3.82-1.33 6.6zM161.57 35.94h-5.98l-.25-1.94 3.27-.55V15.49l-3.32.25-.25-2.09 6.54-1.53h2.56l.15 4.1 7.54-4.85c1.54 0 2.81.13 3.8.4.99.27 1.77.71 2.34 1.33.57.62.96 1.44 1.18 2.47.22 1.02.33 2.29.33 3.8v14.09l3.47.55-.25 1.94h-11.16l-.25-1.94 2.31-.55V19.31c0-2.28-1.01-3.42-3.02-3.42-.84 0-1.66.22-2.46.66-.8.44-1.61.93-2.41 1.47l-1.31.91v14.53l2.46.55-.25 1.94h-5.04zM195.76 11.41c1.67 0 3.07.12 4.17.35 1.11.23 1.99.65 2.64 1.26.65.6 1.11 1.42 1.38 2.44.27 1.02.4 2.3.4 3.85v9.8c0 1.07.07 1.87.2 2.39s.33.98.6 1.38h2.46l.25 2.01-7.44 1.51-1.61-3.97-5.88 4.32c-2.25 0-4.08-.59-5.5-1.76s-2.14-2.78-2.14-4.83c0-.97.18-1.84.53-2.61.35-.77.83-1.51 1.43-2.21l11.26-3.67v-2.71c0-1.51-.18-2.62-.53-3.34-.35-.72-1.1-1.08-2.24-1.08-.64 0-1.28.08-1.94.25-.65.17-1.23.37-1.73.6l-.8 4.37h-5.18v-4.22l9.67-4.13zm2.76 12.37l-6.38 2.61c-.37.4-.64.87-.8 1.41-.17.54-.25 1.09-.25 1.66 0 1.27.29 2.16.85 2.66.57.5 1.19.75 1.86.75.64 0 1.21-.13 1.71-.4s.92-.52 1.26-.75l1.76-1.21v-6.73zM232.76 29.38c0 1.03.06 1.8.18 2.3s.28.95.48 1.35h2.31l.2 2.01-7.24 1.36-1.46-4.22-7.19 4.57c-1.61 0-2.92-.14-3.95-.43-1.02-.29-1.83-.74-2.41-1.36-.59-.62-.99-1.44-1.21-2.46-.22-1.02-.33-2.27-.33-3.75V15.53l-3.22.25-.25-2.27 6.28-1.4h3.02v16.56c0 1.2.26 2.08.78 2.65.52.57 1.37.85 2.54.85.67 0 1.42-.21 2.24-.63.82-.42 1.65-.91 2.49-1.48l.96-.65V15.53l-2.81.25-.25-2.27 5.83-1.4h3.02v17.27zM236.93 15.38v-.85l1.86-1.91h2.97V9.3l3.87-3.47h1.76v7.09h7.24v2.46h-7.19v14.18c0 .8.19 1.52.58 2.14.38.62 1.06.93 2.04.93.74 0 1.41-.11 2.01-.33.6-.22 1.26-.51 1.96-.88l.96 1.91-6.23 3.42c-2.55 0-4.37-.5-5.46-1.51-1.09-1.01-1.63-2.73-1.63-5.18V15.38h-4.74zM268.15 36.87l-5.28-33.83-3.77-.55.5-1.68h11.76v1.68l-3.36.65 3.42 24.78-.5 2.87 8.65-22.27-.75-5.48-2.76-.55.5-1.68h11.76v1.68l-4.37.65 3.42 24.78-.5 2.87 11.11-27.65-4.27-.65.5-1.68h9.7v1.68l-2.51.55-14.23 32.83-3.07 1.01-3.67-22.52.1-2.77-9.3 24.28-3.08 1zM301.18 16.74l-.55-1.41 8.24-3.72 1.56 1.61-3.47 19.76 4.17-2.61.85 1.26-7.14 5.13-2.56-1.61 3.57-20.06-4.67 1.65zm7.08-15.33l1.46-.25 2.82.25v2.41l-.85 2.16-1.36.25-3.17-.25.2-2.51.9-2.06zM316.41 4.27l-.55-1.51L324.7 0l1.21 1.16-3.62 20.71.96-.25 9.1-9.5h4.83l-1 4.67h-3.07c-.87.24-1.66.55-2.36.93-.7.39-1.49.93-2.36 1.63l-3.52 2.92 1.36.5 5.48 10.31 4.32-2.71.85 1.26-7.14 5.13-1.96-1.21-5.73-12.42L319.84 36h-4.27l5.78-33.08-4.94 1.35zM339.73 16.74l-.55-1.41 8.24-3.72 1.56 1.61-3.47 19.76 4.17-2.61.85 1.26-7.14 5.13-2.56-1.61 3.57-20.06-4.67 1.65zm7.09-15.33l1.46-.25 2.82.25v2.41l-.85 2.16-1.36.25-3.17-.25.2-2.51.9-2.06z"
+                    style="fill:#ffffff;"></path>
+            </svg>
+        </a>
+        <span style="flex: 1;"></span><span class="note">Pioneering accessible harm reduction.
+        </span>
+    </header>
+
+    <ul id="post-list">
+        {{#each data as |result|}}
+        <li>
+            <!--<a href='{{{result.link}}}'>
+                <time class="dates" datetime="2022-03-19">Mar 19, 2022</time>
+            </a>-->
+
+            <div class="dates entry-tags">
+                {{#each result.entry_tags as |tag|}}
+                    <span class="tag">{{{tag.label}}}</span>
+                {{/each}}
             </div>
-        </div>
-        <div class="header--aside">
-            <a class="header--aside__msg js-side-menu-msg" {{!--href="/privacy"--}}>Wait. Notice as the seconds pass by.</a>
-        </div>
-    </div>
-    <div id="zero_click_wrapper" class="zci-wrap"></div>
-    <div id="vertical_wrapper" class="verticals"></div>
-    <div id="web_content_wrapper" class="content-wrap">
-        <div class="serp__bottom-right  js-serp-bottom-right"></div>
-        <div class="cw">
-            <div id="links_wrapper" class="serp__results js-serp-results">
-                <div class="ia-modules js-ia-modules"></div>
-                <div id="message" class="results--message"></div>
-                <div id="links" class="results js-results js-results-sidebar">
-                    {{#each results as |result|}}
-                        <div id="r1-0" class="result results_links_deep highlight_d" data-nir="1">
-                            <div class="result__body links_main links_deep">
-                                <h2 class="result__title"><a class="result__a" rel="noopener" href="{{{result.link}}}">{{{result.title}}}</a>{{#each result.obstrusiveTags as |obstrusiveTag|}} <span class="obstrusive-tag">{{{obstrusiveTag.label}}}</span>{{/each}}</h2>
-                                {{!-- <h2 class="result__title">{{title}}</h2> --}}
-                                <div class="result__snippet">{{{result.display_text}}}</div>
-                                {{#if result.tags}}<div class="exp-tags">
-                                    {{#each tags as |tag|}}
-                                        <span class="tag">{{tag.label}}</span>
-                                    {{/each}}
-                                </div>{{/if}}
-                            </div>
-                        </div>
+
+            <a href='{{{result.link}}}'>
+                <b>{{{result.title}}}</b>
+                <h2>{{{result.display_text}}}</h2>
+            </a>
+
+            <div>
+                <div class="exp-tags">
+                    {{#each tags as |tag|}}
+                        <span class="tag">{{tag.label}}</span>
                     {{/each}}
+                    <span class="tag">{{id}}</span>
                 </div>
-                {{!-- <div class="results--sidebar js-results-sidebar">
-                    <div class="sidebar-modules js-sidebar-modules">
-                        <div class="module module--about">
-                            <div class="module__content js-about-module-content">
-                                <div class="module__body js-about-module-body">
-                                    <div class="module__title"><a href="https://de.wikipedia.org/wiki/1P-LSD" class="js-about-module-title module__title__link" title="Mehr auf Wikipedia (DE)">1P-LSD</a></div>
-                                    <div class="module__text"><span class="js-about-module-abstr">1P-LSD ist eine psychedelisch wirkende psychotrope Substanz und Forschungschemikalie. 1P-LSD ist ein Derivat der Lysergsäure, die als Mutterkornalkaloid natürlich vorkommt, sowie ein Analogon von LSD und ein Homolog von ALD-52. Man vermutet, dass 1P-LSD im Körper unter Abspaltung von Propionsäure zu LSD hydrolysiert wird, da LSD-ähnliche Symptome im Tiermodell festgestellt worden sind. Chemisch gehört 1P-LSD zur Strukturklasse der Ergoline. Charakteristisch für die chemische Struktur der Mutterkornalkaloide ist das tetracyclische Ergolin. 1P-LSD besitzt im Gegensatz zu LSD eine zusätzliche N1-Propionylgruppe. Chemische Modifikationen in N1-Position zählen zu den häufigsten durchgeführten Veränderungen am Ergolinsystem, da der indolische Stickstoff für Alkylierungen, Acylierungen, Mannich-Reaktionen und Michael-Additionen leicht zugänglich ist.</span><a href="https://de.wikipedia.org/wiki/1P-LSD" class="module__more-at js-about-module-more-at-inline">Mehr auf Wikipedia (DE)</a>
-                                        <a href="https://de.wikipedia.org/wiki/1P-LSD" class="module__more-at-bottom is-hidden js-about-module-more-at-bottom"><img width="16" height="16" class="zci__more-at__icon" src="/assets/icons/favicons/wikipedia.white.2x.png">Mehr auf Wikipedia (DE)</a>
-                                    </div>
-                                </div>
-                                <div class="about-info-box">
-                                    <div class="about-info-box__info-row"><span class="about-info-box__info-label">Molar mass:</span><span class="about-info-box__info-value">(6aR,9R)-N,N-Diethyl-7-methyl-4-propanoyl-6,6a,8,9-tetrahydroindolo[4,3-fg]quinoline-9-carboxamide</span></div>
-                                    <div class="about-info-box__info-row"><span class="about-info-box__info-label">3D model (Jmol):</span><span class="about-info-box__info-value">Interactive image</span></div>
-                                    <div class="about-info-box__info-row"><span class="about-info-box__info-label">Legal status:</span><span class="about-info-box__info-value">UK: PSA, Illegal in Denmark, Japan, Latvia, Sweden and Switzerland</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+
+                <!--<div class="exp-tags">
+                    {{#each result.entry_tags as |tag|}}
+                        <span class="tag">{{{tag.label}}}</span>
+                    {{/each}}
+                </div>-->
             </div>
-        </div>
-    </div>
-</div>
+        </li>
+        {{/each}}
+    </ul>
+
+    <footer id="index-meta">
+        <nav class="pagination">
+            <span class="page-number">Page 1 of 1</span>
+        </nav>
+
+    </footer>
+
+
+    <footer id="footer">
+        <p class="small">
+            Content is available under <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+            Attribution-ShareAlike 4.0 International</a> unless otherwise noted. <a
+            href="https://psychonautwiki.org/wiki/Project:Privacy_policy">Privacy Policy</a> · <a
+            href="https://psychonautwiki.org/wiki/Project:General_disclaimer">Disclaimer</a>
+        </p>
+    </footer>
+</section>
+
 </body>
 </html>
+

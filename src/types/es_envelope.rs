@@ -49,5 +49,5 @@ pub struct Hit<T, H> {
     pub ignored: Vec<String>,
     #[serde(rename = "_source")]
     pub source: T,
-    pub highlight: H,
+    pub highlight: Option<H>,
 }

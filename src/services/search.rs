@@ -67,9 +67,8 @@ pub async fn search(
             )?;
 
     let search_result =
-        //search_response.json::<EsEnvelope<Report, ReportHighlight>>()
-        serde_json::from_str::<EsEnvelope<Report, ReportHighlight>>(&dbg!(search_response.text().await.unwrap()))
-            //.await
+        dbg!(search_response.json::<EsEnvelope<Report, ReportHighlight>>()
+            .await)
             .map_err(|err|
                          warp::reject::custom(
                              PlebisError::DataError(
@@ -88,9 +87,11 @@ pub async fn search(
 
     let result_env =
         ResultEnvelope {
+            total_results: search_result.hits.total.value,
             title: format!("{} - Plebis", &query.q),
             query: query.q.clone(),
-            results: result_items.clone(),
+            data: result_items.clone(),
+            extra: Option::<()>::None,
         };
 
     let tpl_val =
@@ -107,7 +108,8 @@ pub async fn search(
 
     reg
         .render_template(
-            RESULTS_TEMPLATE,
+            //RESULTS_TEMPLATE,
+            &std::fs::read_to_string("templates/results.hbs").unwrap(),
             &tpl_val,
         )
         .map(|body|

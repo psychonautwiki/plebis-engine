@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if IE 6]><html class="ie6" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if IE 7]><html class="lt-ie8 lt-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if gt IE 8]><!--><html xmlns="http://www.w3.org/1999/xhtml" class="no-js opacity csstransforms3d csstransitions svg cssfilters is-not-mobile-device full-urls dark-header dark-bg"><!--<![endif]-->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=1" />
+    <meta name="referrer" content="origin" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{{title}} on Plebis</title>
+    <link href="/favicon.ico" rel="shortcut icon" />
+    <link rel="apple-touch-icon" href="/assets/logo_icon128.v101.png" />
+    <link rel="image_src" href="/assets/logo_homepage.normal.v101.png" />
+    <link rel="stylesheet" href="/results.css" />
+    <style>
+        div.exp-tags {
+            margin: 4px 0 0 0;
+        }
+
+        div.exp-tags span.tag {
+            border: 1px solid gray;
+            margin: 2px 4px 0px 0px;
+            padding: 2px 2px;
+            font-size: 12px;
+        }
+
+        .obstrusive-tag {
+            border: 1px solid gray;
+            line-height: 150%;
+            font-size: 14px;
+            margin: 0px 0px 0px 0px;
+            padding: 1px 2px;
+        }
+
+        h2.result__title .obstrusive-tag:nth-of-type(1) {
+            margin-left: 3px;
+        }
+    </style>
+</head>
+<body class="body--serp">
+<div class="site-wrapper  js-site-wrapper">
+    <div id="header_wrapper" class="header-wrap js-header-wrap" style="top: 0px;">
+        <div id="header" class="header  cw">
+            <div class="header__search-wrap"><a tabindex="-1" href="/" class="header__logo-wrap js-header-logo"><span class="header__logo js-logo-ddg">Plebis</span></a>
+                <div class="header__content  header__search">
+                    <form id="search_form" class="search--adv  search--header  js-search-form has-text" name="x" action="/search" method="GET">
+                        <input type="text" name="q" tabindex="1" autocomplete="off" id="search_form_input" class="search__input--adv  js-search-input" value="{{query}}" autocapitalize="off" autocorrect="off">
+                        <input id="search_form_input_clear" class="search__clear  js-search-clear" type="button" tabindex="3" value="X">
+                        <input id="search_button" class="search__button  js-search-button" type="submit" tabindex="2" value="S">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="header--aside">
+            <a class="header--aside__msg js-side-menu-msg" {{!--href="/privacy"--}}>Wait. Notice as the seconds pass by.</a>
+        </div>
+    </div>
+    <div id="zero_click_wrapper" class="zci-wrap"></div>
+    <div id="vertical_wrapper" class="verticals"></div>
+    <div id="web_content_wrapper" class="content-wrap">
+        <div class="serp__bottom-right  js-serp-bottom-right"></div>
+        <div class="cw">
+            <div id="links_wrapper" class="serp__results js-serp-results">
+                <div class="ia-modules js-ia-modules"></div>
+                <div id="message" class="results--message"></div>
+                <div id="links" class="results js-results js-results-sidebar">
+                    {{#each results as |result|}}
+                        <div id="r1-0" class="result results_links_deep highlight_d" data-nir="1">
+                            <div class="result__body links_main links_deep">
+                                <h2 class="result__title"><a class="result__a" rel="noopener" href="{{{result.link}}}">{{{result.title}}}</a>{{#each result.obstrusiveTags as |obstrusiveTag|}} <span class="obstrusive-tag">{{{obstrusiveTag.label}}}</span>{{/each}}</h2>
+                                {{!-- <h2 class="result__title">{{title}}</h2> --}}
+                                <div class="result__snippet">{{{result.display_text}}}</div>
+                                {{#if result.tags}}<div class="exp-tags">
+                                    {{#each tags as |tag|}}
+                                        <span class="tag">{{tag.label}}</span>
+                                    {{/each}}
+                                </div>{{/if}}
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+                {{!-- <div class="results--sidebar js-results-sidebar">
+                    <div class="sidebar-modules js-sidebar-modules">
+                        <div class="module module--about">
+                            <div class="module__content js-about-module-content">
+                                <div class="module__body js-about-module-body">
+                                    <div class="module__title"><a href="https://de.wikipedia.org/wiki/1P-LSD" class="js-about-module-title module__title__link" title="Mehr auf Wikipedia (DE)">1P-LSD</a></div>
+                                    <div class="module__text"><span class="js-about-module-abstr">1P-LSD ist eine psychedelisch wirkende psychotrope Substanz und Forschungschemikalie. 1P-LSD ist ein Derivat der Lysergsäure, die als Mutterkornalkaloid natürlich vorkommt, sowie ein Analogon von LSD und ein Homolog von ALD-52. Man vermutet, dass 1P-LSD im Körper unter Abspaltung von Propionsäure zu LSD hydrolysiert wird, da LSD-ähnliche Symptome im Tiermodell festgestellt worden sind. Chemisch gehört 1P-LSD zur Strukturklasse der Ergoline. Charakteristisch für die chemische Struktur der Mutterkornalkaloide ist das tetracyclische Ergolin. 1P-LSD besitzt im Gegensatz zu LSD eine zusätzliche N1-Propionylgruppe. Chemische Modifikationen in N1-Position zählen zu den häufigsten durchgeführten Veränderungen am Ergolinsystem, da der indolische Stickstoff für Alkylierungen, Acylierungen, Mannich-Reaktionen und Michael-Additionen leicht zugänglich ist.</span><a href="https://de.wikipedia.org/wiki/1P-LSD" class="module__more-at js-about-module-more-at-inline">Mehr auf Wikipedia (DE)</a>
+                                        <a href="https://de.wikipedia.org/wiki/1P-LSD" class="module__more-at-bottom is-hidden js-about-module-more-at-bottom"><img width="16" height="16" class="zci__more-at__icon" src="/assets/icons/favicons/wikipedia.white.2x.png">Mehr auf Wikipedia (DE)</a>
+                                    </div>
+                                </div>
+                                <div class="about-info-box">
+                                    <div class="about-info-box__info-row"><span class="about-info-box__info-label">Molar mass:</span><span class="about-info-box__info-value">(6aR,9R)-N,N-Diethyl-7-methyl-4-propanoyl-6,6a,8,9-tetrahydroindolo[4,3-fg]quinoline-9-carboxamide</span></div>
+                                    <div class="about-info-box__info-row"><span class="about-info-box__info-label">3D model (Jmol):</span><span class="about-info-box__info-value">Interactive image</span></div>
+                                    <div class="about-info-box__info-row"><span class="about-info-box__info-label">Legal status:</span><span class="about-info-box__info-value">UK: PSA, Illegal in Denmark, Japan, Latvia, Sweden and Switzerland</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
